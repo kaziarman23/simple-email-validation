@@ -1,4 +1,4 @@
-import Verification_Email_Template from "../libs/Email.Templates.js";
+import template from "../libs/Email.Templates.js";
 import transporter from "./NodeMailer.js";
 
 const sendEmailVerification = async (
@@ -12,13 +12,13 @@ const sendEmailVerification = async (
       to: email, // list of receivers
       subject: "Verify Your Email", // Subject line
       text: "Verify Your Email", // plain text body
-      html: Verification_Email_Template.replace(
+      html: template.Verification_Email_Template.replace(
         "{verificationCode}",
         verificationCode
       ), // html body
     });
 
-    console.log("Message sent: %s", response.messageId);
+    console.log("Message sent: ", response.messageId);
   } catch (error) {
     console.log(error);
   }
