@@ -1,7 +1,7 @@
 import template from "../libs/Email.Templates.js";
 import transporter from "./NodeMailer.js";
 
-const sendEmailVerification = async (
+export const sendEmailVerification = async (
   email,
   verificationCode
 ) => {
@@ -20,8 +20,29 @@ const sendEmailVerification = async (
 
     console.log("Message sent: ", response.messageId);
   } catch (error) {
-    console.log(error);
+    console.log(
+      "Error while sending verification mail",
+      error
+    );
   }
 };
 
-export default sendEmailVerification;
+export const sendWelcomeEmail = async (email, name) => {
+  try {
+    const response = await transporter.sendMail({
+      from: `"Abu Bakkar" <${process.env.EMAIL_TRANSPORTER_USER}>`,
+      // sender address
+      to: email, // list of receivers
+      subject: "Verification Successfull", // Subject line
+      text: "Welcome Message", // plain text body
+      html: template.Welcome_Email_Template.replace(
+        "{name}",
+        name
+      ), // html body
+    });
+
+    console.log("Message sent: ", response.messageId);
+  } catch (error) {
+    console.log("Error while sending welcome mail", error);
+  }
+};

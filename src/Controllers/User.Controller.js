@@ -1,6 +1,9 @@
 import db from "../Configs/DB.Config.js";
 import bcrypt from "bcryptjs";
-import sendEmailVerification from "../Middlewares/Email.js";
+import {
+  sendEmailVerification,
+  sendWelcomeEmail,
+} from "../Middlewares/Email.js";
 
 export const RegisterUser = async (req, res) => {
   const { name, email, password } = await req.body;
@@ -85,6 +88,9 @@ export const VerifyEmail = async (req, res) => {
       `UPDATE users SET isVerified = ?, verificationCode = ? WHERE id = ?`,
       [true, null, userDetails.id]
     );
+
+    // sending welcome mail
+    sendWelcomeEmail(userDetails.email, userDetails.name);
 
     return res.status(200).json({
       success: true,
