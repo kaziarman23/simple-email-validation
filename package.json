@@ -1,0 +1,35 @@
+{
+  "name": "simple-email-validation",
+  "version": "1.0.0",
+  "description": "this is about validating email",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kaziarman23/simple-email-validation.git"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "cors",
+    "mysql"
+  ],
+  "author": "kazi Arman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kaziarman23/simple-email-validation/issues"
+  },
+  "homepage": "https://github.com/kaziarman23/simple-email-validation#readme",
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^5.1.0",
+    "mysql2": "^3.14.0",
+    "nodemailer": "^6.10.0"
+  }
+}
